@@ -28,7 +28,7 @@
         .header-row {
             background-color: #f0f0ff0f;
             border: 1px solid black;
-            background-color: #000;
+            background-color: #4967b8;
             margin-bottom: 110px;
             position: sticky;
             top: 0;
