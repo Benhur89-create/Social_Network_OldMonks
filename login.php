@@ -19,17 +19,20 @@ include("includes/connection.php");
             echo "<script>alert('Password Correct')</script>"; //alert to confirm hash verified
                
     }
+
+    //Blocked users by admin privileges
     $select_block_users = "select * from users2 where user_email='$email' and user_pass='$hashed_password' and block = 1";
     $block_query = mysqli_query($con, $select_block_users);
     $check_block_user = mysqli_num_rows($block_query);
-
+    
+    //Checking hashed and unhashed passwords
     $select_users = "select * from users2 where user_email='$email' and user_pass='$hashed_password' and status='verified'";
     $query = mysqli_query($con, $select_users);
     $check_user = mysqli_num_rows($query);
     
 
     if($check_block_user == 1) {
-       echo "<script>alert('You have been blocked by admin')</script>";  
+       echo "<script>alert('You have been blocked by admin')</script>";  //Script to throw message for blocked users
     }
    
     elseif( $check_user == 1) {
@@ -37,7 +40,7 @@ include("includes/connection.php");
         echo "<script>window.open('home.php', '_self')</script>";
     }
         else {
-            echo "<script>alert('Your Email or Password is incorrect')</script>";
+            echo "<script>alert('Your Email or Password is incorrect')</script>"; //Script to throw error message
         }
 
 
