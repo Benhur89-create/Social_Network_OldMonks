@@ -92,7 +92,7 @@
 		<ul>
 			<li><a href="/home.php" class="active"><i class="fas fa-tachometer-alt"></i> Home</a></li>
 			<li><a href="/users_admin.php"><i class="fas fa-users"></i> Manage Users</a></li>
-			<li><a href="/edit_profile.php"><i class="fas fa-cog"></i> Edit Profile</a></li>
+			<li><a href="/functions/settings_admin.php"><i class="fas fa-cog"></i> Settings</a></li>
 			<li><a href="/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
 		</ul>
 		<form action="#" method="get">
