@@ -14,7 +14,7 @@
 			
         }
        
-        .header-info center a h1{
+        .header-info center h1{
             color: #fff;
             font-size: 45px;
             font-family: Arial, Helvetica, sans-serif;
@@ -31,14 +31,25 @@
         .header-info center a:active {
             color: white;
         }
-		}
+	    
+        a {
+    text-decoration: none;
+    color: #fff;
+    background: #00cc99;
+    padding: 5px 16px;
+    display: inline-block;
+    border-radius: 3px;
+    transition: 0.3s;
+   }
+    
+    
 	</style>
 </head>
 <body>
 	<div class="header">
      <div class="header-col">
             <div class="header-info">
-                 <center><a href="main.php"><h1>Social Network</h1></a></center>
+                 <center><h1>Social Network</h1></center>
             </div>
     </div>
     </div>
