@@ -133,21 +133,35 @@ if(!isset($_SESSION['user_email'])){
             ?>
         </div>
 
+        <?php
+
+        // Encryption key
+        $key = 'Difficult_Encryption_for_SPW';
+
+        // Initialization vector
+        //$iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+        //IV is commented out because we were unable to get the decryption to work
+
+        ?>
+
         <div class="col-sm-6">
             <div class="load_msg" id="scroll_messages">
                 <?php 
                     $sel_msg = "select * from user_messages where (user_to='$user_to_msg' and user_from='$user_from_msg') or (user_from='$user_to_msg' and user_to='$user_from_msg') order by 1 asc";
                     $run_msg = mysqli_query($con, $sel_msg);
+                    
 
                     while($row_msg = mysqli_fetch_array($run_msg)) {
                         $user_to = $row_msg['user_to'];
                         $user_from = $row_msg['user_from'];
                         $msg_body = $row_msg['msg_body'];
+                        // Decrypt the message
+                        $decrypted = openssl_decrypt($msg_body, 'aes-256-cbc', $key, /*0, $iv*/); 
                         $msg_date = $row_msg['date'];
                         ?>
                         <div id="loded_msg">
-                            <p><?php if($user_to == $user_to_msg and $user_from == $user_from_msg) {echo "<div class='message' id='blue' data-toggle='tooltip' title='$msg_date'>$msg_body</div><br><br><br>";}
-                            else if($user_from == $user_to_msg and $user_to == $user_from_msg) {echo "<div class='message' id='green' data-toggle='tooltip' title='$msg_date'>$msg_body</div><br><br><br>";} ?></p>
+                            <p><?php if($user_to == $user_to_msg and $user_from == $user_from_msg) {echo "<div class='message' id='blue' data-toggle='tooltip' title='$msg_date'>$decrypted</div><br><br><br>";}
+                            else if($user_from == $user_to_msg and $user_to == $user_from_msg) {echo "<div class='message' id='green' data-toggle='tooltip' title='$msg_date'>$decrypted</div><br><br><br>";} ?></p>
                         </div>
                         
                         <?php
@@ -184,6 +198,11 @@ if(!isset($_SESSION['user_email'])){
                 if(isset($_POST['send_msg'])) {
                     $msg = htmlentities($_POST['msg-box']);
 
+
+                    // Encrypt the message
+                    $encrypted = openssl_encrypt($msg, 'aes-256-cbc', $key, /*0, $iv*/);
+
+                    
                     if($msg == "") {
                         echo "<h4 style='color:red;text-align:center;'>Error try again</h4>";
                     }
@@ -191,7 +210,7 @@ if(!isset($_SESSION['user_email'])){
                         echo "<h4 style='color:red;text-align:center;'>Message is too big</h4>";
                     }
                     else {
-                        $insert = "insert into user_messages(user_to, user_from, msg_body, date, msg_seen) values ('$user_to_msg', '$user_from_msg', '$msg', NOW(), 'no')";
+                        $insert = "insert into user_messages(user_to, user_from, msg_body, date, msg_seen) values ('$user_to_msg', '$user_from_msg', '$encrypted', NOW(), 'no')";
                         $run_insert = mysqli_query($con, $insert);
                     }
                 }
