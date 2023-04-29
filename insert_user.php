@@ -29,6 +29,15 @@ include("includes/connection.php");
           }
         } 
 
+        //Code to catch invalid emails and terminate the rest of the process using goto
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo("$email is an invalid email address");
+            goto end;
+          } 
+
+          
+
          //Setting Password Validation variables for strong password to reduce successful brutefoce attack
 
          $uppercase = preg_match('@[A-Z]@', $pass);
@@ -36,19 +45,7 @@ include("includes/connection.php");
          $number    = preg_match('@[0-9]@', $pass);
          $specialChars = preg_match('@[^\w]@', $pass);
 
-         //Code to catch invalid emails and terminate the rest of the process using goto
-
-         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo("$email is an invalid email address");
-            goto end;
-          } 
-
-          
-
-          
-          
-          
-          
+         
          //Password validation for strong password
          if(strlen($pass) < 9 || !$uppercase || !$lowercase || !$number || !$specialChars ) {
              echo "<script>alert('Password should be minimum nine characters, have at least one Uppercase, Lowercase, Number and Special Characters')</script>";
