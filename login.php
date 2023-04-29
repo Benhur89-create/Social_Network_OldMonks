@@ -7,6 +7,13 @@ include("includes/connection.php");
     if(isset($_POST['login'])) {
         $email = htmlentities(mysqli_real_escape_string($con, $_POST['email']));
         $pass = htmlentities(mysqli_real_escape_string($con, $_POST['password']));
+        
+        //Input validation used in Login page to prevent SQL injection by making sure the input is in an email format
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo("$email is an invalid email address");
+            goto end;
+          } 
+
 
          //Retrieving Password from DB to verify with hash
          $select_pass = "select user_pass FROM users2 WHERE user_email = '$email'";
@@ -44,6 +51,7 @@ include("includes/connection.php");
         }
 
 
-    }
+    }end: 
+     echo "<script>alert('Email is not in the correct format. Please enter a valid email Id registered with us.')</script>";
 
 ?>
