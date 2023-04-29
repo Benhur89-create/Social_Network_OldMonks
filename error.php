@@ -26,6 +26,7 @@
   <h1>Oops! Page Not Found</h1>
   <p>The requested URL was not found on this server.</p>
   <p>You will be redirected to the home page in 5 seconds.</p>
+  <p><img src="img\404.png" alt="404.png"></p>
 </body>
 </html>
 
