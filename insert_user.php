@@ -17,13 +17,38 @@ include("includes/connection.php");
         $check_username_query = "select user_name from users2 where user_email='$email'";
         $run_username = mysqli_query($con, $check_username_query);
 
+        //Catching invalid birth year
+
+        $datetime = DateTime::createFromFormat('m-d-Y', $birthday); 
+        if ($datetime && $datetime->format('m-d-Y') == $birthday) {
+         $year = $datetime->format('Y');
+         if ($year < 1910 && $year > 2005) {
+           
+            // the birthyear is invalid
+           goto end2;
+          }
+        } 
+
          //Setting Password Validation variables for strong password to reduce successful brutefoce attack
 
          $uppercase = preg_match('@[A-Z]@', $pass);
          $lowercase = preg_match('@[a-z]@', $pass);
          $number    = preg_match('@[0-9]@', $pass);
          $specialChars = preg_match('@[^\w]@', $pass);
- 
+
+         //Code to catch invalid emails and terminate the rest of the process using goto
+
+         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo("$email is an invalid email address");
+            goto end;
+          } 
+
+          
+
+          
+          
+          
+          
          //Password validation for strong password
          if(strlen($pass) < 9 || !$uppercase || !$lowercase || !$number || !$specialChars ) {
              echo "<script>alert('Password should be minimum nine characters, have at least one Uppercase, Lowercase, Number and Special Characters')</script>";
@@ -32,13 +57,13 @@ include("includes/connection.php");
          
          $hashed_pass =password_hash($pass, PASSWORD_DEFAULT); //hashing the above password 
 
-        $check_email = "select * from users2 where user_email='$email'";
+        $check_email = "select * from users2 where user_email='$email'"; //Checking existing emails in the database with the email entered by the new user
         $run_email = mysqli_query($con, $check_email);
 
         $check = mysqli_num_rows($run_email);
 
         if($check == 1) {
-            echo "<script>alert('Email already exists')</script>";
+            echo "<script>alert('Email already exists')</script>"; //Throwing message for existing emails in the database
             echo "<script>window.open('signup.php', '_self')</script>";
             exit();
         }
@@ -77,6 +102,13 @@ include("includes/connection.php");
                 echo "<script>alert('Registration failed: please try again')</script>";
                 echo "<script>window.open('signup.php', '_self')</script>";
             }
+            end: 
+            echo "<script>alert('Registration failed: Invalid email, please try again')</script>"; //Throwing message for invalid email
+            echo "<script>window.open('signup.php', '_self')</script>";
+
+            end2:
+            echo "<script>alert('Invalid birthyear: User must be alive and over 18 years of age') : </script>" . $birthday; //Throwing message for invalid birthyear
+            echo "<script>window.open('signup.php', '_self')</script>";
     }
 
 ?>
