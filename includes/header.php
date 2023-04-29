@@ -54,8 +54,9 @@ include("functions/functions.php");
 			<li><a href="bugs.php">Bug Reports</a></li>
 			<li><a href="messages.php?u_id=new">Messages</a></li>
 
-			
+			<!-- //Code to restrict Admin Dashboard to normal users-->
 			<?php
+			
                if($role == "admin") 
                 {?><li><a href="admin/admin.php">Admin Dashboard</a></li><?php } 
 			   else 
