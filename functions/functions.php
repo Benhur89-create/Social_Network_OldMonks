@@ -207,7 +207,7 @@ function get_posts() {
         }
     }
 }
-
+// Function to search all users except admin users
 function search_user() {
     global $con;
 
@@ -261,7 +261,7 @@ function search_user() {
         ";
     }
 }
-
+// Function to Manaage users for admin users
 function search_user_admin() {
     global $con;
 
