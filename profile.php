@@ -214,7 +214,7 @@ if(!isset($_SESSION['user_email'])){
                                 </div>
                                 <div class='col-sm-6'>
                                     <h3>
-                                        <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='profile.php?u_id=$user_id'>$user_name</a>
+                                        <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='user_profile.php?u_id=$user_id'>$user_name</a>
                                     </h3>
                                     <h4><small style='color: black;'>Updated a post on <strong>$post_date</strong></small></h4>
                                 </div>
@@ -227,6 +227,7 @@ if(!isset($_SESSION['user_email'])){
                                 </div>
                             </div><br>
                             <a href='single.php?post_id=$post_id' style='float: right;'><button class='btn btn-success'>View</button></a>
+                            
                             <a href='functions/delete_post.php?post_id=$post_id' style='float: right;'><button class='btn btn-danger'>delete</button></a><br><br><br>
                         </div><br><br>
 
@@ -243,7 +244,7 @@ if(!isset($_SESSION['user_email'])){
                                 </div>
                                 <div class='col-sm-6'>
                                     <h3>
-                                        <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='profile.php?u_id=$user_id'>$user_name</a>
+                                        <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='user_profile.php?u_id=$user_id'>$user_name</a>
                                     </h3>
                                     <h4><small style='color: black;'>Updated a post on <strong>$post_date</strong></small></h4>
                                 </div>
@@ -273,7 +274,7 @@ if(!isset($_SESSION['user_email'])){
                                 </div>
                                 <div class='col-sm-6'>
                                     <h3>
-                                        <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='profile.php?u_id=$user_id'>$user_name</a>
+                                        <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='user_profile.php?u_id=$user_id'>$user_name</a>
                                     </h3>
                                     <h4><small style='color: black;'>Updated a post on <strong>$post_date</strong></small></h4>
                                 </div>

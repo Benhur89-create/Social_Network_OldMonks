@@ -115,7 +115,7 @@ function get_posts() {
                             </div>
                             <div col-sm-6>
                                 <h3>
-                                    <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='profile.php?u_id=$user_id'>$user_name</a>
+                                    <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='user_profile.php?u_id=$user_id'>$user_name</a>
                                 </h3>
                                 <h4><small style='color: black;'>Updated a post on <strong>$post_date</strong></small></h4>
                             </div>
@@ -149,7 +149,7 @@ function get_posts() {
                             </div>
                             <div col-sm-6>
                                 <h3>
-                                    <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='profile.php?u_id=$user_id'>$user_name</a>
+                                    <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='user_profile.php?u_id=$user_id'>$user_name</a>
                                 </h3>
                                 <h4><small style='color: black;'>Updated a post on <strong>$post_date</strong></small></h4>
                             </div>
@@ -184,7 +184,7 @@ function get_posts() {
                             </div>
                             <div col-sm-6>
                                 <h3>
-                                    <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='profile.php?u_id=$user_id'>$user_name</a>
+                                    <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='user_profile.php?u_id=$user_id'>$user_name</a>
                                 </h3>
                                 <h4><small style='color: black;'>Updated a post on <strong>$post_date</strong></small></h4>
                             </div>
@@ -217,7 +217,7 @@ function search_user() {
         l_name like '%$search_query%' or user_name like '%$search_query%') ";
     }
     else {
-        $get_user = "select * from users2 where Role != 'admin'";
+        $get_user = "select * from users2 where Role != 'admin' ";
     }
 
     $run_user = mysqli_query($con, $get_user);
@@ -261,7 +261,7 @@ function search_user() {
         ";
     }
 }
-// Function to Manaage users for admin users
+// Function to Manage users for admin users
 function search_user_admin() {
     global $con;
 

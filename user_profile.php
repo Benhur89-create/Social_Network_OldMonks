@@ -189,7 +189,7 @@ if(!isset($_SESSION['user_email'])){
                                                 <p><img src='users/$user_image' class='img-circle' width='100px' height='100px'></p>
                                             </div>
                                             <div class='col-sm-6'>
-                                                <h3><a style='text-decoration:none;cursor:pointer;color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</a></h3>
+                                                <h3><a style='text-decoration:none;cursor:pointer;color:#3897f0;' href='user_profile'?u_id=$user_id'>$user_name</a></h3>
                                                 <h4><small style='color:black;'>Updated post on <strong>$post_date</strong></small></h4>
                                             </div>
                                             <div class='col-sm-4'>
@@ -212,7 +212,7 @@ if(!isset($_SESSION['user_email'])){
                                         </div>
                                         <div class='col-sm-6'>
                                             <h3>
-                                                <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='profile.php?u_id=$user_id'>$user_name</a>
+                                                <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='user_profile.php?u_id=$user_id'>$user_name</a>
                                             </h3>
                                             <h4><small style='color: black;'>Updated a post on <strong>$post_date</strong></small></h4>
                                         </div>
@@ -241,7 +241,7 @@ if(!isset($_SESSION['user_email'])){
                                         </div>
                                         <div class='col-sm-6'>
                                             <h3>
-                                                <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='profile.php?u_id=$user_id'>$user_name</a>
+                                                <a style='text-decoration: none; cursor: pointer; color: #3897f80;' href='user_profile.php?u_id=$user_id'>$user_name</a>
                                             </h3>
                                             <h4><small style='color: black;'>Updated a post on <strong>$post_date</strong></small></h4>
                                         </div>
